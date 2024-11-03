@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang=""pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet"href="styles.css">
+    
+</head>
+</html>
+
+<html>
+    <body style="background-color: #FAEBD7;"> <!-- Antique White, tom nude claro -->
+        <!-- Conteúdo da página -->
+    </body>
+    
+    <head>
+        
+        <style>
+            h1 {
+                text-align: center;
+            }
+        </style>
+       
+            <h1 style="color: green;">Perfil do Aluno</h1> <hr>
+            
+        </head>
+        <title>Mover Imagem com Setas</title>
+    <style>
+        /* Estilo para centralizar a imagem */
+        #imagem-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+        }
+        #imagem {
+            position: relative;
+        }
+        .botao {
+            font-size: 12px;
+            padding: 10px;
+            margin: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container da imagem -->
+    <div id="imagem-container">
+        <img id="imagem" src="https://upload.wikimedia.org/wikipedia/pt/5/59/Magali.png" alt="Magali" width="100">
+    </div>
+
+    <!-- Botões para mover a imagem -->
+    <div style="text-align: center;">
+        <button class="botao" onclick="moverEsquerda()">⬅️ Esquerda</button>
+        <button class="botao" onclick="moverDireita()">➡️ Direita</button>
+        </div>
+
+    <script>
+        let posicaoX = 0;
+        let posicaoY = 0;
+
+        function moverEsquerda() {
+            posicaoX -= 20;
+            atualizarPosicao();
+        }
+
+        function moverDireita() {
+            posicaoX += 20;
+            atualizarPosicao();
+        }
+
+        function moverCima() {
+            posicaoY -= 20;
+            atualizarPosicao();
+        }
+
+        function moverBaixo() {
+            posicaoY += 20;
+            atualizarPosicao();
+        }
+
+        function atualizarPosicao() {
+            const imagem = document.getElementById('imagem');
+            imagem.style.transform = `translate(${posicaoX}px, ${posicaoY}px)`;
+        }
+    </script>
+
+</body>
+</html>
+    <script>
+        
+        function adicionarUC() {
+            // Pedindo ao usuário para inserir o nome da nova UC
+            var novaUC = prompt("Por favor, insira o nome da nova UC:");
+            
+            // Verificando se o usuário inseriu algo
+            if (novaUC) {
+                // Encontrando a tabela pelo seu ID
+                var tabela = document.getElementById("ucsCursadas");
+                
+                // Criando uma nova linha e célula para a tabela
+                var novaLinha = tabela.insertRow();
+                var novaCelula = novaLinha.insertCell();
+                
+                // Adicionando a classe a nova linha e célula, se necessário
+                novaLinha.className = "tr-simple";
+                novaCelula.className = "td-simple";
+                
+                // Definindo o texto da nova célula para o valor inserido pelo usuário
+                novaCelula.textContent = novaUC;
+            }
+        }
+
+        
+    function validarCPF(cpf) {
+        // Limpa o CPF de pontos e traos
+        cpf = cpf.replace(/[.-]/g, '');
+
+        // Verifica se o CPF possui 11 dgitos aps a limpeza
+        if (cpf.length !== 11) {
+            document.getElementById('mensagemErro').textContent = 'CPF inválido. Deve conter 11 dígitos.';
+            return;
+        }
+
+        let soma = 0;
+        let resto;
+
+        // Validação do primeiro digito verificador
+        for (let i = 1; i <= 9; i++) 
+            soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
+        resto = (soma * 10) % 11;
+
+        if ((resto == 10) || (resto == 11))  resto = 0;
+        if (resto != parseInt(cpf.substring(9, 10)) ) {
+            document.getElementById('mensagemErro').textContent = 'CPF invlido.';
+            return;
+        }
+        
+        soma = 0;
+        for (let i = 1; i <= 10; i++) 
+            soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
+        resto = (soma * 10) % 11;
+        
+        if ((resto == 10) || (resto == 11))  resto = 0;
+        if (resto != parseInt(cpf.substring(10, 11) ) ) {
+            document.getElementById('mensagemErro').textContent = 'CPF invlido.';
+            return;
+        }
+
+        // Se passar por todas as validações, limpa a mensagem de erro
+        document.getElementById('mensagemErro').textContent = '';
+    }
+
+    function validarEmail(email) {
+        const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        if (!regex.test(email)) {
+            document.getElementById('mensagemErroEmail').textContent = 'E-mail inválido.';
+        } else {
+            document.getElementById('mensagemErroEmail').textContent = '';
+        }
+    }
+    </script>
+
+    <body>
+        
+            <tr class="tr-center">
+                <td class="td-center"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="" width="100%">
+                        <tr>
+                           
+                            <td width="25%" class="td-simple-title"> <strong>Nome</strong></td>
+                            
+                                                       
+                            <td width="50%">Dayane Alaiz do Carmo Gomes  </td>
+                            <td width="25%" align="center" rowspan="3">
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%" class="td-simple-title" ><strong>Endereço</strong></td>
+                            <td width="50%">Rua Caiapós, 304 Bairro: Andyara</td>
+                        </tr>
+                        <tr>
+                            <td width="25%" class="td-simple-title"><STRONG>RA</STRONG></td>
+                            <td width="50%">323211729</td>
+                        </tr>
+                        <tr>
+                            <td width="25%" class="td-simple-title"><strong>CPF</strong></td>
+                            <td width="50%"><input type="text" id="cpf" placeholder="Digite seu CPF" onblur="validarCPF(this.value)">
+                                <div id="mensagemErro" style="color: red;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%" class="td-simple-title"><strong>E-mail</strong></td>
+                            <td width="50%"> <input type="text" id="email" placeholder="Digite seu e-mail" onblur="validarEmail(this.value)">
+                                <div id="mensagemErroEmail" style="color: red;"></div>
+                            </td>
+                           
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="tr-center">
+                <td class="td-center"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="" width="100%" class="table-simple-title">
+                        <tr>
+                            <td width="25%" class="td-simple-title"><strong>Curso</strong></td>
+                            <td width="75%">Análise e desenvolvimento de sistemas</td>
+                        </tr>
+                        <tr>
+                            <td width="25%" class="td-simple-title"><strong>Período Atual</strong></td>
+                            <td width="75%">3º Período</td>
+                        </tr>
+                        <tr>
+                            <td class="td-simple-title"><strong>UCs Cursadas</strong></td>
+                            <td>
+                                <table id="UcsCursadas" width="100%" class="table-simple">
+    <div style="text-align: center;">
+    <button class="botao" onclick="moverCima()">⬆️ Cima</button>
+    <button class="botao" onclick="moverBaixo()">⬇️ Baixo</button>
+    </div>
+
+    <script>
+        let posicaoX = 0;
+        let posicaoY = 0;
+
+        function moverEsquerda() {
+            posicaoX -= 20;
+            atualizarPosicao();
+        }
+
+        function moverDireita() {
+            posicaoX += 20;
+            atualizarPosicao();
+        }
+
+        function moverCima() {
+            posicaoY -= 20;
+            atualizarPosicao();
+        }
+
+        function moverBaixo() {
+            posicaoY += 20;
+            atualizarPosicao();
+        }
+
+        function atualizarPosicao() {
+            const imagem = document.getElementById('imagem');
+            imagem.style.transform = `translate(${posicaoX}px, ${posicaoY}px)`;
+        }
+    </script>
+                                    <tbody>
+    <tr class="tr-simple">
+    <td class="td-simple"><input type="checkbox"></td>
+    <td class="td-simple">Sistemas computacionais e segurança</td>
+    
+    </tr>
+        <tr class="tr-simple">
+         <td class="td-simple"><input type="checkbox"></td>
+            <td class="td-simple">Ambientes computacionais e conectividade</td>
+             <td></td>
+                                        </tr>
+                                        <tr class="tr-simple">
+                                            <td class="td-simple"><input type="checkbox"></td>
+                                            <td class="td-simple">Programação de soluções computacionais</td>
+                                            <tr class="tr-simple">
+                                                <td class="td-simple"><input type="checkbox"></td>
+                                                <td class="td-simple">Modelagem de Software</td>
+                                                <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>    
+                                <button onclick="adicionarUC()">Adicionar Nova UC</button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="tr-center">
+              <hr><strong>Perfil pessoal</strong> <td class="td-center"</td></td</hr>
+            </tr>
+            <tr>
+            <p><td>Sou uma pessoa apaixonada por pedalar nos fins de semana, minha companhia de pedal é o meu irmão, que também é estudande de tecnologia da informação no centro Universitário UNA. Além disso, faço musculação de 3 a 4 vezes por semana, procuro ter uma alimentação equilibrada para otimizar o processo de hipertrofia muscular que é o meu principal objetivo. Minha família é do Norte de Minas e São Paulo. Amo viajar, passear em parques e visitar museus.</p></td>
+            </tr>
+            <tr class="tr-center">
+                <hr><p><strong>Perfil Acadêmico</strong><td class="td-center"</td></p></tr></body</hr>
+            </tr>
+                <td> Com formação em Nutrição e experiência prática no atendimento a pacientes, apaixonada por tecnologia da informação estou em transição de carreira tendo como principal área de atuação redes de computadores, sendo motivada pelo desejo de aplicar minhas habilidades analíticas em um novo campo.</p>
+            </td>
+           
+            
+    </body>
+
+</html>
